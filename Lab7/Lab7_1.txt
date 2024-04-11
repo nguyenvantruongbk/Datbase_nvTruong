@@ -1,9 +1,18 @@
-CREATE TABLE users( id varchar(10) NOT NULL PRIMARY KEY, name varchar(150) NOT NULL, dob DATE);
+CREATE TABLE users( id varchar(10) NOT NULL PRIMARY KEY, name varchar(150) NOT NULL,user_address varchar(255), dob DATE);
 CREATE TABLE tels( id varchar(10) NOT NULL PRIMARY KEY, tel varchar(14));
 CREATE TABLE user_tels(id int PRIMARY KEY IDENTITY(1,1), user_id varchar(10) NOT NULL FOREIGN KEY REFERENCES users(id), tel_id varchar(10) NOT NULL FOREIGN KEY REFERENCES tels(id));
+DROP TABLE user_tels;
+DROP TABLE users;
+DROP TABLE tels;
+
 SELECT * FROM users;
-INSERT INTO users(id,name,dob) VALUES('NVA1','Nguyen Van An','1987-11-18');
+INSERT INTO users(id,name,user_address,dob) VALUES('NVA1','Nguyen Van An','111 Nguyễn Trãi, Thanh Xuân, Hà Nội','1987-11-18');
 SELECT * FROM tels;
 INSERT INTO tels(id,tel) VALUES('TEL01','987654321'),('TEL02','09873452'),('TEL03','09832323'),('TEL04','09434343');
 SELECT * FROM user_tels;
+
 INSERT INTO user_tels(user_id,tel_id) VALUES('NVA1','TEL01'),('NVA1','TEL02'),('NVA1','TEL03'),('NVA1','TEL04');
+------
+INSERT INTO users(id,name,user_address,dob) VALUES('NVB2','Nguyen Van Ba','112 Nguyễn Trãi, Thanh Xuân, Hà Nội','1987-12-18');
+INSERT INTO tels(id,tel) VALUES('TEL05','987654322'),('TEL06','09873453');
+INSERT INTO user_tels(user_id,tel_id) VALUES('NVB2','TEL05'),('NVB2','TEL06');
